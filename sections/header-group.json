@@ -58,11 +58,88 @@
       "type": "ceshi",
       "name": "t:sections.ceshi.presets.name",
       "settings": {}
+    },
+    "new_arrivals_carousel_jikqpG": {
+      "type": "new-arrivals-carousel",
+      "blocks": {
+        "arrival_item_GL7qQ9": {
+          "type": "arrival_item",
+          "settings": {
+            "item_image": "shopify://shop_images/Main_9129b69a-0c7b-4f66-b6cf-c4222f18028a.jpg",
+            "item_title": "xTool Selected Air Compressor & Air Dryer",
+            "item_description": "<p>The Most Cost-efficient Gas Solution for Metal Cutting</p>",
+            "item_link": "shopify://products/the-multi-managed-snowboard"
+          }
+        },
+        "arrival_item_FYHApT": {
+          "type": "arrival_item",
+          "settings": {
+            "item_image": "shopify://shop_images/Main_9129b69a-0c7b-4f66-b6cf-c4222f18028a.jpg",
+            "item_title": "xTool Selected Air Compressor & Air Dryer",
+            "item_description": "<p>The Most Cost-efficient Gas Solution for Metal Cutting</p>",
+            "item_link": "shopify://products/the-multi-managed-snowboard"
+          }
+        },
+        "arrival_item_aNz8PA": {
+          "type": "arrival_item",
+          "settings": {
+            "item_image": "shopify://shop_images/Main_9129b69a-0c7b-4f66-b6cf-c4222f18028a.jpg",
+            "item_title": "xTool Selected Air Compressor & Air Dryer",
+            "item_description": "<p>The Most Cost-efficient Gas Solution for Metal Cutting</p>",
+            "item_link": "shopify://products/the-multi-managed-snowboard"
+          }
+        },
+        "arrival_item_UYpqtN": {
+          "type": "arrival_item",
+          "settings": {
+            "item_image": "shopify://shop_images/Main_9129b69a-0c7b-4f66-b6cf-c4222f18028a.jpg",
+            "item_title": "xTool Selected Air Compressor & Air Dryer",
+            "item_description": "<p>The Most Cost-efficient Gas Solution for Metal Cutting</p>",
+            "item_link": "shopify://products/the-multi-managed-snowboard"
+          }
+        },
+        "arrival_item_UTWk3f": {
+          "type": "arrival_item",
+          "settings": {
+            "item_image": "shopify://shop_images/Main_9129b69a-0c7b-4f66-b6cf-c4222f18028a.jpg",
+            "item_title": "xTool Selected Air Compressor & Air Dryer",
+            "item_description": "<p>The Most Cost-efficient Gas Solution for Metal Cutting</p>",
+            "item_link": "shopify://products/the-multi-managed-snowboard"
+          }
+        },
+        "arrival_item_MyHeQa": {
+          "type": "arrival_item",
+          "settings": {
+            "item_image": "shopify://shop_images/Main_9129b69a-0c7b-4f66-b6cf-c4222f18028a.jpg",
+            "item_title": "xTool Selected Air Compressor & Air Dryer",
+            "item_description": "<p>The Most Cost-efficient Gas Solution for Metal Cutting</p>",
+            "item_link": "shopify://products/the-multi-managed-snowboard"
+          }
+        }
+      },
+      "block_order": [
+        "arrival_item_GL7qQ9",
+        "arrival_item_FYHApT",
+        "arrival_item_aNz8PA",
+        "arrival_item_UYpqtN",
+        "arrival_item_UTWk3f",
+        "arrival_item_MyHeQa"
+      ],
+      "name": "New Arrivals Carousel",
+      "settings": {
+        "section_title": "Explore Our New Arrivals",
+        "slides_to_show_desktop": 5,
+        "slides_to_show_tablet": 3,
+        "slides_to_show_mobile": 1,
+        "autoplay": false,
+        "autoplay_speed": 4000
+      }
     }
   },
   "order": [
     "announcement-bar",
     "header",
-    "ceshi_7BVd64"
+    "ceshi_7BVd64",
+    "new_arrivals_carousel_jikqpG"
   ]
 }
