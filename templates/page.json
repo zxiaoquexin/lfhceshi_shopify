@@ -1,0 +1,27 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "ceshi2_gwGKGL": {
+      "type": "ceshi2",
+      "name": "t:sections.ceshi2.presets.name",
+      "settings": {}
+    },
+    "ceshi2_HMy9Nq": {
+      "type": "ceshi2",
+      "name": "t:sections.ceshi2.presets.name",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "ceshi2_gwGKGL",
+    "ceshi2_HMy9Nq"
+  ]
+}

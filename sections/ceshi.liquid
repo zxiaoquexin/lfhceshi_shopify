@@ -1,0 +1,45 @@
+<!-- 基本店铺信息 -->
+<h1>{{ shop.name }}</h1>
+<p>{{ shop.description }}</p>
+
+<!-- 店铺联系信息 -->
+<address>
+  {{ shop.address.address1 -}}
+  <br>
+  {% if shop.address.address2 -%}
+    {{- shop.address.address2 -}}
+    <br>
+  {% endif %}
+  {{ shop.address.city }}, {{ shop.address.province }}
+  {{ shop.address.zip -}}
+  <br>
+  {{ shop.address.country }}
+</address>
+
+<!-- 店铺设置 -->
+<p>货币: {{ shop.currency }}</p>
+<p>域名: {{ shop.domain }}</p>
+<p>安全域名: {{ shop.secure_url }}</p>
+<p>客服邮箱: {{ shop.customer_email }}</p>
+<p>客服电话: {{ shop.phone }}</p>
+
+<!-- 店铺策略页面 -->
+{% if shop.privacy_policy %}
+  <a href="{{ shop.privacy_policy.url }}">隐私政策</a>
+{% endif %}
+{% if shop.refund_policy %}
+  <a href="{{ shop.refund_policy.url }}">退款政策</a>
+{% endif %}
+{% if shop.terms_of_service %}
+  <a href="{{ shop.terms_of_service.url }}">服务条款</a>
+{% endif %}
+{% schema %}
+{
+  "name": "测试",
+  "presets": [
+    {
+      "name": "t:sections.ceshi.presets.name"
+    }
+  ]
+}
+{% endschema %}
