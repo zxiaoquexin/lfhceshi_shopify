@@ -1,0 +1,381 @@
+{% comment %}
+  New Arrivals Carousel Section
+  Displays a responsive carousel of new product/accessory arrivals
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "New Arrivals Carousel",
+  "class": "new-arrivals-carousel",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Explore Our New Arrivals"
+    },
+    {
+      "type": "range",
+      "id": "slides_to_show_desktop",
+      "label": "Slides to show (Desktop)",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "slides_to_show_tablet",
+      "label": "Slides to show (Tablet)",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "slides_to_show_mobile",
+      "label": "Slides to show (Mobile)",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Enable Autoplay",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "Autoplay Speed (ms)",
+      "min": 2000,
+      "max": 8000,
+      "step": 1000,
+      "default": 4000
+    }
+  ],
+  "blocks": [
+    {
+      "type": "arrival_item",
+      "name": "New Arrival Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "item_image",
+          "label": "Item Image"
+        },
+        {
+          "type": "text",
+          "id": "item_title",
+          "label": "Item Title",
+          "default": "Product Name"
+        },
+        {
+          "type": "richtext",
+          "id": "item_description",
+          "label": "Item Description",
+          "default": "<p>Short product description goes here.</p>"
+        },
+        {
+          "type": "url",
+          "id": "item_link",
+          "label": "Learn More Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "New Arrivals Carousel",
+      "category": "Featured",
+      "settings": {
+        "section_title": "Explore Our New Arrivals",
+        "slides_to_show_desktop": 5,
+        "slides_to_show_tablet": 3,
+        "slides_to_show_mobile": 1,
+        "autoplay": false
+      },
+      "blocks": [
+        {
+          "type": "arrival_item",
+          "settings": {
+            "item_title": "xTool Selected Air Compressor & Air Dryer",
+            "item_description": "<p>The Most Cost-efficient Gas Solution for Metal Cutting</p>"
+          }
+        },
+        {
+          "type": "arrival_item",
+          "settings": {
+            "item_title": "xTool SafetyPro™ AP2",
+            "item_description": "<p>Air Purifier with SuperCyclone System Designed for All Laser User</p>"
+          }
+        },
+        {
+          "type": "arrival_item",
+          "settings": {
+            "item_title": "xTool M1 Ultra Electrostatic Mat",
+            "item_description": "<p>Curl-free & Tear-free Crafting</p>"
+          }
+        },
+        {
+          "type": "arrival_item",
+          "settings": {
+            "item_title": "xTool M1 Ultra Hot Foil Pen",
+            "item_description": "<p>Pop Your Craft with Dazzling Foil</p>"
+          }
+        },
+        {
+          "type": "arrival_item",
+          "settings": {
+            "item_title": "Black Laser Marking Spray",
+            "item_description": "<p>Can be applied to a wide variety of materials</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% if section.blocks.size > 0 %}
+<div class="new-arrivals-carousel__container page-width">
+  <h2 class="new-arrivals-carousel__title">{{ section.settings.section_title }}</h2>
+  
+  <div class="new-arrivals-carousel__wrapper">
+    <button class="new-arrivals-carousel__nav new-arrivals-carousel__nav--prev" aria-label="Previous slide">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15 19L8 12L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    
+    <div class="new-arrivals-carousel__track" 
+         data-slides-desktop="{{ section.settings.slides_to_show_desktop }}"
+         data-slides-tablet="{{ section.settings.slides_to_show_tablet }}"
+         data-slides-mobile="{{ section.settings.slides_to_show_mobile }}"
+         data-autoplay="{{ section.settings.autoplay }}"
+         data-autoplay-speed="{{ section.settings.autoplay_speed }}">
+      {% for block in section.blocks %}
+        <div class="new-arrivals-carousel__slide" {{ block.shopify_attributes }}>
+          <div class="new-arrivals-carousel__card">
+            {% if block.settings.item_image %}
+              <div class="new-arrivals-carousel__image">
+                <img 
+                  src="{{ block.settings.item_image | image_url: width: 400 }}" 
+                  alt="{{ block.settings.item_title | escape }}"
+                  loading="lazy"
+                >
+              </div>
+            {% endif %}
+            
+            <div class="new-arrivals-carousel__content">
+              <h3 class="new-arrivals-carousel__item-title">{{ block.settings.item_title }}</h3>
+              <div class="new-arrivals-carousel__description rte">
+                {{ block.settings.item_description }}
+              </div>
+              {% if block.settings.item_link %}
+                <a href="{{ block.settings.item_link }}" class="new-arrivals-carousel__link">
+                  Learn more <span aria-hidden="true">→</span>
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    
+    <button class="new-arrivals-carousel__nav new-arrivals-carousel__nav--next" aria-label="Next slide">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+</div>
+{% endif %}
+
+{% style %}
+.new-arrivals-carousel__container {
+  padding: 6rem 0;
+}
+
+.new-arrivals-carousel__title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--color-text);
+}
+
+.new-arrivals-carousel__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.new-arrivals-carousel__nav {
+  background: rgba(var(--color-text-rgb), 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.new-arrivals-carousel__nav:hover {
+  background: rgba(var(--color-text-rgb), 0.2);
+}
+
+.new-arrivals-carousel__track {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  flex: 1;
+}
+
+.new-arrivals-carousel__track::-webkit-scrollbar {
+  display: none;
+}
+
+.new-arrivals-carousel__slide {
+  flex: 0 0 calc(100% / {{ section.settings.slides_to_show_mobile }} - 1rem);
+  scroll-snap-align: start;
+}
+
+@media screen and (min-width: 750px) {
+  .new-arrivals-carousel__slide {
+    flex: 0 0 calc(100% / {{ section.settings.slides_to_show_tablet }} - 1rem);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .new-arrivals-carousel__slide {
+    flex: 0 0 calc(100% / {{ section.settings.slides_to_show_desktop }} - 1rem);
+  }
+}
+
+.new-arrivals-carousel__card {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.new-arrivals-carousel__image {
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.new-arrivals-carousel__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.new-arrivals-carousel__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.new-arrivals-carousel__item-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--color-text);
+}
+
+.new-arrivals-carousel__description {
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.new-arrivals-carousel__link {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-link);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  margin-top: auto;
+}
+
+.new-arrivals-carousel__link:hover {
+  color: var(--color-link-hover);
+  text-decoration: underline;
+}
+
+/* Hide nav buttons on mobile if only one slide is shown */
+@media screen and (max-width: 749px) and ({{ section.settings.slides_to_show_mobile }} == 1) {
+  .new-arrivals-carousel__nav {
+    display: none;
+  }
+}
+{% endstyle %}
+
+{% javascript %}
+document.addEventListener('DOMContentLoaded', function() {
+  const track = document.querySelector('.new-arrivals-carousel__track');
+  if (!track) return;
+
+  const prevBtn = document.querySelector('.new-arrivals-carousel__nav--prev');
+  const nextBtn = document.querySelector('.new-arrivals-carousel__nav--next');
+  const slides = Array.from(track.children);
+  const slideWidth = slides[0]?.getBoundingClientRect().width || 0;
+
+  // Navigation handlers
+  prevBtn?.addEventListener('click', () => {
+    track.scrollBy({ left: -slideWidth, behavior: 'smooth' });
+  });
+
+  nextBtn?.addEventListener('click', () => {
+    track.scrollBy({ left: slideWidth, behavior: 'smooth' });
+  });
+
+  // Autoplay
+  const autoplay = track.dataset.autoplay === 'true';
+  const autoplaySpeed = parseInt(track.dataset.autoplaySpeed, 10);
+
+  if (autoplay && slides.length > 1) {
+    let autoplayInterval = setInterval(() => {
+      const isAtEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 10;
+      if (isAtEnd) {
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        track.scrollBy({ left: slideWidth, behavior: 'smooth' });
+      }
+    }, autoplaySpeed);
+
+    // Pause on hover
+    track.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
+    track.addEventListener('mouseleave', () => {
+      autoplayInterval = setInterval(() => {
+        const isAtEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 10;
+        if (isAtEnd) {
+          track.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          track.scrollBy({ left: slideWidth, behavior: 'smooth' });
+        }
+      }, autoplaySpeed);
+    });
+  }
+});
+{% endjavascript %}
